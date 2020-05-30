@@ -15,6 +15,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using BookStore_API.Contracts;
 using NLog;
+using AutoMapper;
+using BookStore_API.Mappings;
+
 namespace BookStore_API
 {
     public class Startup
@@ -46,6 +49,10 @@ namespace BookStore_API
                     .AllowAnyMethod()
                     );
             });
+
+
+            services.AddAutoMapper(typeof(Maps));
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("V1", new OpenApiInfo
